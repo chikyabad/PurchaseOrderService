@@ -19,7 +19,7 @@ module.exports = async function () {
         // Get puchase orders details
         let purchaseOrders = await tx.run(SELECT.from(PurchaseOrders).where({ status: params.status }));
 
-        if(!purchaseOrders){
+        if (!purchaseOrders) {
             return req.reject(404);
         }
 
@@ -51,5 +51,7 @@ module.exports = async function () {
         return tx.run(SELECT.one.from(PurchaseOrders).where({ ID: data.id }));
 
     });
+
+
 
 }

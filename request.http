@@ -1,4 +1,10 @@
 GET http://localhost:4004/purchase-orders-service/PurchaseOrders
+###
+
+GET http://localhost:4004/purchase-orders-service/Vendors
+
+###
+PATCH http://localhost:4004/purchase-orders-service/PurchaseOrders/
 
 ####
 GET http://localhost:4004/purchase-orders-service/getOrdersByStatus(status='New')
