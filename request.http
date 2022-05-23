@@ -1,0 +1,16 @@
+GET http://localhost:4004/purchase-orders-service/PurchaseOrders
+
+####
+GET http://localhost:4004/purchase-orders-service/getOrdersByStatus(status='New')
+
+###
+POST http://localhost:4004/purchase-orders-service/setOrderStatus
+Content-Type: application/json
+
+{
+  "id": "603c38c7-422f-4c80-bf17-54a07d9c42ff",
+  "status": "Active"
+}
+
+###
+GET http://localhost:4004/purchase-orders-service/PurchaseOrders
