@@ -25,7 +25,7 @@ module.exports = async function () {
 
         return purchaseOrders;
 
-    })
+    });
 
     this.on('setOrderStatus', async req => {
 
@@ -51,7 +51,5 @@ module.exports = async function () {
         return tx.run(SELECT.one.from(PurchaseOrders).where({ ID: data.id }));
 
     });
-
-
 
 }

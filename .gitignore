@@ -31,3 +31,5 @@ mta_archives/
 
 # auto generated wildcard
 orders-service/.env1
+# auto generated wildcard
+orders-service/.env2

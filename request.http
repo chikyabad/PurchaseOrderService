@@ -1,4 +1,15 @@
-GET http://localhost:4004/purchase-orders-service/PurchaseOrders
+GET http://localhost:4004/purchase-orders-service/PurchaseOrders/478e40f6-32bb-44ff-b126-3f5b60133966
+###
+
+POST http://localhost:4004/purchase-orders-service/PurchaseOrders
+Content-Type: application/json
+
+{
+    "vendor": {
+        "id": 1
+    },
+    "status": "Completed"
+}
 ###
 
 GET http://localhost:4004/purchase-orders-service/Vendors
@@ -7,14 +18,14 @@ GET http://localhost:4004/purchase-orders-service/Vendors
 PATCH http://localhost:4004/purchase-orders-service/PurchaseOrders/
 
 ####
-GET http://localhost:4004/purchase-orders-service/getOrdersByStatus(status='New')
+GET http://localhost:4004/purchase-orders-service/getOrdersByStatus(status='Newwererw')
 
 ###
 POST http://localhost:4004/purchase-orders-service/setOrderStatus
 Content-Type: application/json
 
 {
-  "id": "603c38c7-422f-4c80-bf17-54a07d9c42ff",
+  "id": "478e40f6-32bb-44ff-b126-3f5b6013396f",
   "status": "Active"
 }
 
