@@ -26,6 +26,8 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: vendors-service-db
+      - name: locked-vendors-http
+      - name: orders-service-uaa
 
   - name: orders-service-db-deployer
     type: hdb
@@ -36,6 +38,7 @@ modules:
       - name: vendors-service-db
 
 resources:
+
   - name: vendors-service-db
     type: com.sap.xs.hdi-container
     parameters:
@@ -43,3 +46,19 @@ resources:
       service-plan: hdi-shared
     properties:
       hdi-service-name: ${service-name}
+
+  - name: locked-vendors-http
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: lite
+      service: destination
+
+  - name: orders-service-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: orders-service-${org}-${space}
+        tenant-mode: dedicated

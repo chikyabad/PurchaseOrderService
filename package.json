@@ -9,7 +9,9 @@
     "@sap/cds": "^5",
     "@sap/hana-client": "^2.12.25",
     "express": "^4",
-    "hdb": "^0.18.3"
+    "hdb": "^0.18.3",
+    "@sap/xssec": "^3",
+    "passport": "^0"
   },
   "devDependencies": {
     "@sap/hdi-deploy": "4.3.3",
@@ -47,6 +49,16 @@
     "requires": {
       "db": {
         "kind": "hana"
+      },
+      "LockedVendorService": {
+        "kind": "odata",
+        "model": "srv/external/LockedVendorService",
+        "credentials": {
+          "destination": "locked-vendors-http"
+        }
+      },
+      "uaa": {
+        "kind": "xsuaa"
       }
     },
     "hana": {

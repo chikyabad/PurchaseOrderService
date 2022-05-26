@@ -4,6 +4,18 @@ module.exports = async function () {
 
     const db = await cds.connect.to('db'), { PurchaseOrders, PurchaseOrdersLines } = db.entities;
 
+    this.before(['CREATE', 'UPDATE'], 'PurchaseOrders', async (req) => {
+
+        const lockedVendorService = await cds.connect.to('LockedVendorService');
+        const { LockedVendors } = lockedVendorService.entities;
+        const tx = lockedVendorService.transaction(req);
+        const response = await tx.run(SELECT.from(LockedVendors).where({ id: req.data.vendor_id}));
+        if (response[0]){
+            return req.reject(400, `Order cannot be created/updated as vendor ${req.data.vendor_id} is locked`);
+        }
+        
+    });
+
     this.before('CREATE', 'PurchaseOrders', async (req) => {
         req.data.status = 'New';
     });
